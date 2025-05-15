@@ -8,7 +8,7 @@ class MockInstallTimePluginPlatform
     with MockPlatformInterfaceMixin
     implements InstallTimePluginPlatform {
   @override
-  Future<String?> getPlatformVersion() => Future.value(null);
+  Future<String?> getFirstInstallTime() => Future.value(null);
 }
 
 void main() {
@@ -19,7 +19,7 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelInstallTimePlugin>());
   });
 
-  test('getPlatformVersion', () async {
+  test('getFirstInstallTime', () async {
     MockInstallTimePluginPlatform fakePlatform =
         MockInstallTimePluginPlatform();
     InstallTimePluginPlatform.instance = fakePlatform;
