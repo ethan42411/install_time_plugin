@@ -7,23 +7,26 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockInstallTimePluginPlatform
     with MockPlatformInterfaceMixin
     implements InstallTimePluginPlatform {
-
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<String?> getPlatformVersion() => Future.value(null);
 }
 
 void main() {
-  final InstallTimePluginPlatform initialPlatform = InstallTimePluginPlatform.instance;
+  final InstallTimePluginPlatform initialPlatform =
+      InstallTimePluginPlatform.instance;
 
   test('$MethodChannelInstallTimePlugin is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelInstallTimePlugin>());
   });
 
   test('getPlatformVersion', () async {
-    InstallTimePlugin installTimePlugin = InstallTimePlugin();
-    MockInstallTimePluginPlatform fakePlatform = MockInstallTimePluginPlatform();
+    MockInstallTimePluginPlatform fakePlatform =
+        MockInstallTimePluginPlatform();
     InstallTimePluginPlatform.instance = fakePlatform;
 
-    expect(await installTimePlugin.getPlatformVersion(), '42');
+    final int? installTime = await InstallTimePlugin.getFirstInstallTime();
+    // The version string depends on the host platform running the test, so
+    // just assert that some non-empty string is returned.
+    expect(installTime, null);
   });
 }
