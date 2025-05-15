@@ -1,4 +1,4 @@
-package com.example.my_flutter_utils
+package com.example.install_time_plugin
 
 import android.content.pm.PackageManager
 import androidx.annotation.NonNull
@@ -6,7 +6,7 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-class MyFlutterUtilsPlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
+class InstallTimePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
   private lateinit var channel: MethodChannel
   private lateinit var packageManager: PackageManager
   private lateinit var packageName: String
