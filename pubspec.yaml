@@ -1,7 +1,7 @@
 name: install_time_plugin
 description: "A Flutter plugin to get Android's firstInstallTime."
 version: 0.0.1
-homepage:
+homepage: https://github.com/ethan42411/install_time_plugin
 
 environment:
   sdk: ^3.7.2
