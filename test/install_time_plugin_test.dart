@@ -1,0 +1,29 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:install_time_plugin/install_time_plugin.dart';
+import 'package:install_time_plugin/install_time_plugin_platform_interface.dart';
+import 'package:install_time_plugin/install_time_plugin_method_channel.dart';
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+
+class MockInstallTimePluginPlatform
+    with MockPlatformInterfaceMixin
+    implements InstallTimePluginPlatform {
+
+  @override
+  Future<String?> getPlatformVersion() => Future.value('42');
+}
+
+void main() {
+  final InstallTimePluginPlatform initialPlatform = InstallTimePluginPlatform.instance;
+
+  test('$MethodChannelInstallTimePlugin is the default instance', () {
+    expect(initialPlatform, isInstanceOf<MethodChannelInstallTimePlugin>());
+  });
+
+  test('getPlatformVersion', () async {
+    InstallTimePlugin installTimePlugin = InstallTimePlugin();
+    MockInstallTimePluginPlatform fakePlatform = MockInstallTimePluginPlatform();
+    InstallTimePluginPlatform.instance = fakePlatform;
+
+    expect(await installTimePlugin.getPlatformVersion(), '42');
+  });
+}
