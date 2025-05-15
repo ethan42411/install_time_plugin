@@ -1,5 +1,5 @@
 name: install_time_plugin
-description: "A new Flutter plugin project."
+description: "A Flutter plugin to get Android's firstInstallTime."
 version: 0.0.1
 homepage:
 
